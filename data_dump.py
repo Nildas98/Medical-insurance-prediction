@@ -5,7 +5,7 @@ import json
 
 # fetching the data here in the mongodb
 client = pymongo.MongoClient(
-    "mongodb+srv://NilutpalDAS992:<password>@cluster0.xxk1zfm.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://NilutpalDAS992:s729TiAxVqw01pG@cluster0.xxk1zfm.mongodb.net/?retryWrites=true&w=majority"
 )
 db = client.test
 
