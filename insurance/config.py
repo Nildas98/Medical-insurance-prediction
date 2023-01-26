@@ -5,7 +5,7 @@ import json
 import os, sys
 from dataclasses import dataclass
 
-
+# Loading the environment from the given mongodb link
 @dataclass
 class EnvironmentVariable:
     mongo_db_url: str = os.getenv("MONGO_DB_URL")
