@@ -22,8 +22,10 @@ class InsuranceException(Exception):
         file_name = exc_tb.tb_frame.f_code.co_filename
 
         # preparing error message
-        error_message = f"Error occurred python script name[{file_name}]"
-        f"line number [{exc_tb.tb_lineno}] error_message [{error}]."
+        error_message = (
+            f"Error occurred python script name[{file_name}]"
+            f"line number [{exc_tb.tb_lineno}] error_message [{error}]."
+        )
 
         return error_message
 

@@ -41,6 +41,8 @@ class DataIngestionConfig:
             self.test_file_path = os.path.join(
                 self.data_ingestion_dir, "dataset", TEST_FILE_NAME
             )
+            # assigning the test size
+            self.test_size = 0.2
         except Exception as e:
             raise InsuranceException(e, sys)
 
