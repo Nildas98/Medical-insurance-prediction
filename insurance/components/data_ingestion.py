@@ -57,7 +57,7 @@ class DataIngestion:
             os.makedirs(dataset_dir, exist_ok=True)
 
             # saving the train and test data
-            logging.info("Dataset to feature store")
+            logging.info(" Save df to feature store")
             train_df.to_csv(
                 path_or_buf=self.data_ingestion_config.train_file_path,
                 index=False,
@@ -71,9 +71,12 @@ class DataIngestion:
 
             # prepare artifact folder
             data_ingestion_artifact = artifact_entity.DataIngestionArtifact(
-                feature_Store_file_path=self.data_ingestion_config.feature_store_file_path,
+                feature_store_file_path=self.data_ingestion_config.feature_store_file_path,
                 train_file_path=self.data_ingestion_config.train_file_path,
                 test_file_path=self.data_ingestion_config.test_file_path,
             )
+            logging.info(f"Data ingestion artifact: {data_ingestion_artifact}")
+            return data_ingestion_artifact
+
         except Exception as e:
             raise InsuranceException(error_message=e, error_detail=sys)
