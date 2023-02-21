@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 class DataIngestion:
     def __init__(self, data_ingestion_config: config_entity.DataIngestionConfig):
         try:
+            logging.info(f"-------------Data Ingestion-------------")
             self.data_ingestion_config = data_ingestion_config
         except Exception as e:
             raise InsuranceException(e, sys)

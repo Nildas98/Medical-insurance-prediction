@@ -6,6 +6,7 @@ from insurance.entity.config_entity import DataIngestionConfig
 from insurance.entity import config_entity
 from insurance.components.data_ingestion import DataIngestion
 from insurance.components.data_validation import DataValidation
+from insurance.components.data_transformation import DataTransformation
 
 # def test_logger_exception():
 
@@ -25,9 +26,10 @@ if __name__ == "__main__":
         # get_collections_as_dataframe(
         #     database_name="INSURANCE", collection_name="INSURANCE_PROJECT"
         # )
+
         training_pipeline_config = config_entity.TrainingPipelineConfig()
 
-        # data Ingestion
+        # Data Ingestion
         data_ingestion_config = config_entity.DataIngestionConfig(
             training_pipeline_config=training_pipeline_config
         )
@@ -47,6 +49,18 @@ if __name__ == "__main__":
         )
 
         data_validation_artifact = data_validation.initiate_data_validation()
+
+        # Data Transformation
+        data_transformation_config = config_entity.DataTransformationConfig(
+            training_pipeline_config=training_pipeline_config
+        )
+        data_transformation = DataTransformation(
+            data_transformation_config=data_transformation_config,
+            data_ingestion_artifact=data_ingestion_artifact,
+        )
+        data_transformation_artifact = (
+            data_transformation.initiate_data_transformation()
+        )
 
     except Exception as e:
         print(e)
