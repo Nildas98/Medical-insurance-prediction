@@ -20,7 +20,7 @@ class DataTransformation:
     ):
 
         try:
-            logging.info(f"-------------Data Transformation-------------")
+            logging.info(f"{'>>'*20} Model Trainer {'<<'*20}")
             self.data_transformation_config = data_transformation_config
             self.data_ingestion_artifact = data_ingestion_artifact
 

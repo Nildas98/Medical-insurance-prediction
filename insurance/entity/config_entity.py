@@ -8,6 +8,7 @@ TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME = "test.csv"
 TRANSFORMER_OBJECT_FILE_NAME = "transformer.pkl"
 TARGET_ENCODER_OBJECT_FILE_NAME = "target_encoder.pkl"
+MODEL_FILE_NAME = "model.pkl"
 
 
 class TrainingPipelineConfig:
@@ -91,3 +92,21 @@ class DataTransformationConfig:
             "target_encoder",
             TARGET_ENCODER_OBJECT_FILE_NAME,
         )
+
+
+class ModelTrainerConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        # creating the model trainer dir in the artifact dir
+        self.model_trainer_dir = os.path.join(
+            training_pipeline_config.artifact_dir, "model_trainer"
+        )
+        # defining the model and save as pkl file it in the model trainer dir
+        self.model_path = os.path.join(self.model_trainer_dir, "model", MODEL_FILE_NAME)
+        # defining the threshold limit for accuracy
+        self.expected_accuracy = 0.7
+        # accuracy less than 70%, model will not accept old model will continue
+        # accuracy more than or equal to 70% will accept the model
+
+        # defining for checking overfitting
+        self.overfitting_threshold = 0.3
+        # if threshold is more than 0.3 then we will reject

@@ -97,8 +97,14 @@ def save_numpy_array_data(file_path: str, array: np.array):
     except Exception as e:
         raise InsuranceException(e, sys)
 
-    # try:
-    #     pass
 
-    # except Exception as e:
-    #     raise InsuranceException(e, sys)
+# model trainer for loading the data
+def load_numpy_array_data(file_path: str) -> np.array:
+    try:
+        # opening the file as object in rb mode and return file_object
+        # now we wil go to the model_trainer file
+        with open(file_path, "rb") as file_obj:
+            return np.load(file_obj)
+
+    except Exception as e:
+        raise InsuranceException(e, sys) from e

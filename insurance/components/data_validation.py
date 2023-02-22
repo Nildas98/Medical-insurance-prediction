@@ -18,7 +18,7 @@ class DataValidation:
     ):
 
         try:
-            logging.info(f"-------------Data Validation-------------")
+            logging.info(f"{'>>'*20} Model Trainer {'<<'*20}")
             self.data_validation_config = data_validation_config
             self.data_ingestion_artifact = data_ingestion_artifact
             self.validation_error = dict()
