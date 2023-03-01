@@ -82,20 +82,18 @@ class ModelTrainer:
 
             # as it is a regression problem, R2_square will be used for evaluation
             r2_test_score = r2_score(y_true=y_test, y_pred=y_hat_test)
+
             logging.info(
                 f"train score:{r2_train_score} and tests score {r2_test_score}"
             )
 
             # now we need to check whether it is overfitting or underfitting
-            # for this go to config_entity
 
             logging.info(f"Checking if our model is underfitting or not")
             # if r2_test_score is less than expected_threshold then we will reject
             if r2_test_score < self.model_trainer_config.expected_accuracy:
                 raise Exception(
-                    f"model is not able to give expected accuracy: \
-                    {self.model_trainer_config.expected_accuracy}: \
-                        model actual score: {r2_test_score}"
+                    f"model is not able to give expected accuracy: {self.model_trainer_config.expected_accuracy}: model actual score: {r2_test_score}"
                 )
 
             logging.info(f"Checking if our model is overfitting or not")
@@ -123,8 +121,6 @@ class ModelTrainer:
 
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
-
-            # now go to main.py file for defining trainer file
 
         except Exception as e:
             raise InsuranceException(e, sys)

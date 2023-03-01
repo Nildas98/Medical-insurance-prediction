@@ -1,0 +1,25 @@
+Data drift within train dataset:
+  age:
+    pvalues: 0.727923743126548
+    same_distribution: true
+  bmi:
+    pvalues: 0.20638395096840711
+    same_distribution: true
+  children:
+    pvalues: 0.9967807610043586
+    same_distribution: true
+  expenses:
+    pvalues: 0.508348989194092
+    same_distribution: true
+  region:
+    pvalues: 0.8278641161867568
+    same_distribution: true
+  sex:
+    pvalues: 0.9688638321658714
+    same_distribution: true
+  smoker:
+    pvalues: 1.0
+    same_distribution: true
+Missing_values_within_base_dataset: []
+Missing_values_within_test_dataset: []
+Missing_values_within_train_dataset: []

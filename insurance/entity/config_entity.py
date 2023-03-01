@@ -110,3 +110,36 @@ class ModelTrainerConfig:
         # defining for checking overfitting
         self.overfitting_threshold = 0.3
         # if threshold is more than 0.3 then we will reject
+
+
+# Model Evaluation
+class ModelEvaluationConfig:
+    # defining the constructor
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        self.change_threshold = 0.01
+
+
+# Model Pusher
+class ModelPusherConfig:
+    # defining the constructor
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        # defining the pusher model folder in the artifact
+        self.model_pusher_dir = os.path.join(
+            training_pipeline_config.artifact_dir, "model_pusher"
+        )
+        # creating folders inside pusher folder for saved and pushed model
+        self.saved_model_dir = os.path.join("saved_models")
+        self.pusher_model_dir = os.path.join(self.model_pusher_dir, "saved_models")
+
+        # saving pushed model in the pusher folder in pkl format
+        self.pusher_model_path = os.path.join(self.pusher_model_dir, MODEL_FILE_NAME)
+
+        # saving transformer file in the pusher folder in pkl format
+        self.pusher_transformer_path = os.path.join(
+            self.pusher_model_dir, TRANSFORMER_OBJECT_FILE_NAME
+        )
+
+        # saving target encoded file in the pusher folder in pkl format
+        self.pusher_target_encoder_path = os.path.join(
+            self.pusher_model_dir, TARGET_ENCODER_OBJECT_FILE_NAME
+        )
